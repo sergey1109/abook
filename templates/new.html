@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style-edit.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
+    <title>Edit Contact</title>
+</head>
+
+<body>
+<div class='container'>
+    <header class="hero">
+
+        <a href="{% url 'index' %}">
+            <i class="fas fa-chevron-circle-left back-btn"></i>
+        </a>
+
+        <div class="hero-info">
+            <h1 class="name">New Contact</h1>
+        </div>
+    </header>
+    <section class="contact-info">
+        <form action="." method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="info-line">
+                    <p style="margin: 10px; color: aliceblue; ">{{ field.label }}</p>
+                    {{ field }}
+
+                </div>
+            {% endfor %}
+          <section class="button-container">
+
+
+        <div class="update-contact">
+            <i id="save" class="fas fa-check-circle icon-gradient"></i>
+            <button class="button">Save Contact</button>
+        </div>
+    </section>
+        </form>
+    </section>
+
+</div>
+
+</body>
+
+
+</html>
+{% comment %}
+<form action="" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<section class="contact-info">
+
+				<div class="info-line">
+					<i class="fas fa-phone icon-gradient"></i>
+					<input type="text" class="type" name="fullname" placeholder="Full Name">
+				</div>
+
+				<div class="info-line">
+					<i class="fas fa-user-circle icon-gradient"></i>
+					<input type="text" class="type" name="adress" placeholder="Adress">
+				</div>
+
+
+
+				<div class="info-line">
+					<i class="fas fa-sms icon-gradient "></i>
+					<input type="text" class="type" name="phone-number" placeholder="Phone Number">
+				</div>
+
+
+
+
+				<div class="info-line">
+					<i class="fas fa-map-marker-alt icon-gradient url"></i>
+					<input type="text" class="type" name="url" placeholder="Url">
+				</div>
+
+
+				<div class="info-line">
+					<i class="fas fa-envelope icon-gradient "></i>
+					<input type="image" class="img_user" name="img_user" placeholder="Img-user">
+				</div>
+
+
+
+			</section>
+            <section>
+            </section>
+			<section class="button-container">
+
+
+				<div class="update-contact">
+					<i id="save" class="fas fa-check-circle icon-gradient"></i>
+					<button type=" submit" class="button">Save Contact</button>
+				</div>
+			</section>
+
+
+		</form>{% endcomment %}
